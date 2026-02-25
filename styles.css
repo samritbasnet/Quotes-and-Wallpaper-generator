@@ -16,7 +16,27 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
-
+h1 {
+  color: #333;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+#quote {
+  font-size: 1.5em;
+  font-style: italic;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#author {
+  font-size: 1.1em;
+  color: #999;
+  font-weight: 400;
+  text-align: center;
+}
 .quote-card {
   background: white;
   border-radius: 15px;
@@ -25,12 +45,57 @@ body {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 .btn {
-  padding: 12px 30px;
-  background: blue;
+  padding: 14px 35px;
+  font-size: 1em;
+  border: none;
+  background: #667eea;
   color: white;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-secondary {
+  background: #f5576c;
+}
+.btn:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
 }
 
-.btn-secondary {
-  background: purple;
+.btn:active {
+  transform: translateY(0);
+}
+.btn-secondary:hover {
+  background: #e63946;
+  box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
+}
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .quote-card {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  #quote {
+    font-size: 1.2em;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
 }
