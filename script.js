@@ -6,14 +6,6 @@ const newImageBtn = document.getElementById('new-image-btn');
 const downloadBtn = document.getElementById('download-btn');
 const shareBtn = document.getElementById('share-btn');
 
-// ---- FALLBACK QUOTES (used if API is unreachable) ----
-const fallbackQuotes = [
-  { text: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' },
-  { text: 'Life is what happens when you are busy making other plans.', author: 'John Lennon' },
-  { text: 'In the middle of every difficulty lies opportunity.', author: 'Albert Einstein' },
-  { text: 'Dream big and dare to fail.', author: 'Norman Vaughan' },
-];
-
 // ---- FETCH QUOTE FROM FREE API ----
 async function fetchQuote() {
   // dummyjson.com: free, no API key, CORS-friendly
