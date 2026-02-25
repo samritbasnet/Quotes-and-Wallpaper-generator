@@ -3,99 +3,168 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-  min-height: 100vh;
+
+/* ---- FULL SCREEN WALLPAPER ---- */
+.wallpaper {
+  width: 100vw; /* full viewport width */
+  height: 100vh; /* full viewport height */
+  background-size: cover; /* image covers entire screen */
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; /* needed for overlay positioning */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+
+/* ---- DARK OVERLAY (so quote text is readable) ---- */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* darker overlay = more readable text */
 }
-h1 {
-  color: #333;
-  font-size: 2.5em;
-  font-weight: 600;
-  margin-bottom: 30px;
+
+/* ---- CLOCK ---- */
+.clock {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
   text-align: center;
+  color: #ffffff;
 }
-#quote {
-  font-size: 1.5em;
-  font-style: italic;
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  text-align: center;
+
+.clock-time {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 5em;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  line-height: 1;
 }
-#author {
-  font-size: 1.1em;
-  color: #999;
-  font-weight: 400;
-  text-align: center;
-}
-.quote-card {
-  background: white;
-  border-radius: 15px;
-  padding: 50px;
-  border-radius: 15px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-}
-.btn {
-  padding: 14px 35px;
+
+.clock-date {
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 1em;
-  border: none;
-  background: #667eea;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- QUOTE TEXT WRAPPER ---- */
+.quote-wrapper {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 50px 60px;
+  max-width: 850px;
+  background: rgba(0, 0, 0, 0.45); /* frosted glass card behind text */
+  border-radius: 16px;
+  backdrop-filter: blur(8px); /* blurs background behind card */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+blockquote {
+  margin-bottom: 25px;
+}
+
+#quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2em;
+  font-style: normal; /* non-italic is easier to read */
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.75;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+#author {
+  font-family: 'Inter', Arial, sans-serif; /* clean sans-serif for author */
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- BUTTONS ---- */
+.controls {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn {
+  padding: 12px 25px;
+  font-size: 1em;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: transparent;
   color: white;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
-.btn-secondary {
-  background: #f5576c;
-}
+
 .btn:hover {
-  background: #5568d3;
+  background: white;
+  color: #333;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
 }
 
 .btn:active {
   transform: translateY(0);
 }
+
+.btn-download {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffd700;
+  color: #ffd700;
+}
+
+.btn-download:hover {
+  background: #ffd700;
+  color: #333;
+}
+
+.btn-secondary {
+  border-color: #1da1f2;
+  color: #1da1f2;
+}
+
 .btn-secondary:hover {
-  background: #e63946;
-  box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
-}
-.button-group {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 40px;
-  flex-wrap: wrap;
+  background: #1da1f2;
+  color: white;
 }
 
+/* ---- RESPONSIVE ---- */
 @media (max-width: 600px) {
-  .quote-card {
-    padding: 30px;
-  }
-
-  h1 {
-    font-size: 2em;
-  }
-
   #quote {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 
-  .button-group {
+  .controls {
     flex-direction: column;
+    align-items: center;
   }
 
   .btn {
-    width: 100%;
+    width: 200px;
+    text-align: center;
   }
 }
